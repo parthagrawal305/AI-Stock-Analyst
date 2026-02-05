@@ -1,0 +1,21 @@
+[project]
+name = "stock_analysis"
+version = "0.1.0"
+description = ""
+authors = [{name = "Your Name", email = "you@example.com"}]
+readme = "README.md"
+requires-python = ">=3.12,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+    "python-dotenv>=1.0.1",
+    "html2text>=2024.2.26",
+    "yfinance>=1.2.0",
+    "langchain-groq>=1.1.2",
+    "streamlit>=1.54.0",
+    "litellm>=1.75.3",
+    "groq>=0.37.1",
+]
+
+[project.scripts]
+stock_analysis = "stock_analysis.main:run"
+train = "stock_analysis.main:train"
