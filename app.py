@@ -1,7 +1,21 @@
 import streamlit as st
 import sys
 import os
+import logging
 from dotenv import load_dotenv
+
+os.environ["CREWAI_TRACING_ENABLED"] = "false"
+os.environ["CREWAI_TELEMETRY_OPT_OUT"] = "true"
+
+# Configure production-style logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -30,13 +44,17 @@ if st.button("Start Analysis"):
         else:
             with st.status(f"🤖 Agents are analyzing {ticker}...", expanded=True) as status:
                 st.write("Initializing agents...")
+                logger.info(f"Starting analysis for ticker: {ticker}")
                 inputs = {
                     'query': f'Analyze the financial health and provide an investment recommendation for {ticker}.',
                     'company_stock': ticker,
                 }
                 
                 try:
+                    logger.info("Kicking off CrewAI orchestrator...")
                     result = StockAnalysisCrew().crew().kickoff(inputs=inputs)
+                    
+                    logger.info(f"Analysis for {ticker} completed successfully.")
                     status.update(label="Analysis Complete!", state="complete", expanded=False)
                     
                     st.success(f"Final Report for {ticker} Generated Successfully!")
@@ -50,8 +68,8 @@ if st.button("Start Analysis"):
                          st.markdown(result)
                             
                 except Exception as e:
+                    logger.error(f"CrewAI execution failed: {str(e)}", exc_info=True)
                     status.update(label="Analysis Failed", state="error")
-                    st.error(f"An error occurred during analysis: {str(e)}")
-                    st.exception(e)
+                    st.error(f"An error occurred during analysis. Check terminal logs for detailed stack trace.\n\nError: {str(e)}")
     else:
         st.warning("Please enter a valid ticker symbol.")

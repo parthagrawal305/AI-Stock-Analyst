@@ -1,5 +1,4 @@
-# 📈 Dalal Street AI Analyst
-*(Formerly Autonomous Stock Analysis)*
+# 📈 AI-Stock-Analyst
 
 <div align="center">
   <h3>Analyze Global & Indian Equities using an Autonomous AI Boardroom.</h3>
@@ -10,7 +9,7 @@
 ## 🚀 Overview
 This repository showcases an advanced **Multi-Agent Orchestration Framework** using **CrewAI**. Instead of a single chatbot answering questions, this project spins up an autonomous "Board of Directors" to analyze a specific company ticker and present a full investment recommendation.
 
-✨ **Live Deployment:** [Insert Streamlit Link Here after deployment]
+✨ **Live Deployment:** [AI Stock Analyst](https://ai-stock-analyst-agent.streamlit.app)
 
 ## 🧠 The AI Boardroom
 The system delegates work sequentially to three specialized AI Agents:
@@ -58,4 +57,4 @@ Because this framework is powered by Yahoo Finance, you can analyze ANY ticker g
 *   **Indian Equities:** `RELIANCE.NS`, `TCS.NS`, `INFY.BO`
 
 ---
-*Built with ❤️ utilizing the latest standards in Autonomous GenAI Frameworks.*
+*Built with ❤️ utilizing the latest standards in Autonomous GenAI Frameworks. (Note: Portions of this documentation were assisted by AI)*

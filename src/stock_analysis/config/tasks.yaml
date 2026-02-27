@@ -20,7 +20,7 @@ research:
   expected_output: >
     A report that includes a comprehensive summary of the latest news, 
     any notable shifts in market sentiment, and potential impacts on the stock. Also make sure to return the stock ticker as {company_stock}.
-    Make sure to use the most recent data as possible.
+    Make sure to use the most recent data as possible. NEVER use placeholder text like '[insert date]'. If a specific date or event is unknown, state that it is currently unavailable or omit it entirely.
 
 filings_analysis:
   description: >
@@ -46,3 +46,4 @@ recommend:
     Your final answer MUST be a recommendation for your customer. It should be a full super detailed report, providing a 
     clear investment stance and strategy with supporting evidence.
     Make it pretty and well formatted for your customer.
+    CRITICAL INSTRUCTION: NEVER generate placeholder text such as '[Date]', '[insert date]', or '[Price]'. If specific dates or prices are missing from your context, you MUST state "Data Unavailable" or omit the field entirely. Do not hallucinate data.
