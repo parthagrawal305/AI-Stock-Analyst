@@ -12,6 +12,24 @@ This repository showcases an advanced **Multi-Agent Orchestration Framework** us
 ✨ **Live Deployment:** [AI Stock Analyst](https://ai-stock-analyst-agent.streamlit.app)
 
 ## 🧠 The AI Boardroom
+
+```mermaid
+graph TD
+    User([User Ticker Input]) --> UI[Streamlit UI]
+    UI --> Crew{CrewAI Orchestrator}
+    
+    Crew --> A1[🕵️‍♂️ Research Analyst]
+    Crew --> A2[📊 Financial Analyst]
+    Crew --> A3[💼 Investment Advisor]
+    
+    A1 -.->|yfinance + Web Search| LLM[Groq: Llama 3.3 70B]
+    A2 -.->|yfinance Balance Sheets| LLM
+    A3 -.->|Synthesize Final Report| LLM
+    
+    LLM --> Crew
+    Crew --> UI
+```
+
 The system delegates work sequentially to three specialized AI Agents:
 1.  🕵️‍♂️ **Research Analyst:** Queries live internet data and Yahoo Finance for the latest news, market sentiment, and macroeconomic events affecting the ticker.
 2.  📊 **Financial Analyst:** Fetches raw quantitative financial data (Income Statements & Balance Sheets) and performs mathematical operations to gauge financial health.
